@@ -22,4 +22,11 @@ export default {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.container {
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+}
+</style>
