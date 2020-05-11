@@ -1,8 +1,19 @@
 <template>
   <div>
+    <Menu />
     <nuxt />
+    <myFooter />
   </div>
 </template>
+
+<script>
+import Menu from '../components/Menu'
+import Footer from '../components/Footer'
+
+export default {
+  components: { Menu, myFooter: Footer }
+}
+</script>
 
 <style>
 html {
