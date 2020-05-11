@@ -39,7 +39,7 @@
       margin: 0 0 30px;
 
       &:last-child {
-        margin: 0 0 50px;
+        margin: 0;
       }
     }
 
@@ -57,6 +57,24 @@
   iframe {
     width: 100%;
     height: 60vw;
+    margin: 50px 0 0;
+  }
+
+  @media screen and (min-width: 768px) {
+    & > div {
+      display: flex;
+    }
+
+    .address {
+      width: 50%;
+      padding: 0 20px 0 0;
+    }
+
+    iframe {
+      width: 50%;
+      height: 300px;
+      margin: 0 0 0 20px;
+    }
   }
 }
 </style>
