@@ -47,6 +47,10 @@
   }
 
   @media screen and (min-width: 768px) {
+    & {
+      margin: 0;
+    }
+
     .title-container {
       width: 500px;
 

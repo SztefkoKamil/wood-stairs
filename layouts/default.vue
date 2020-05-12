@@ -32,6 +32,7 @@ html {
   --card-bg: #e9e9e9;
   --green: #3eb115;
   --shadow: hsla(0, 0%, 40%, 0.75);
+  scroll-behavior: smooth;
 }
 
 *,

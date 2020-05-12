@@ -1,19 +1,21 @@
 <template>
-  <header class="menu-container">
-    <a class="logo" href="#top">Wood-Stairs</a>
-    <button v-if="!desktop" @click="open = !open">
-      <div class="toggle-menu-btn" :class="{ open }">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </button>
-    <nav :class="{ open }">
-      <a href="#about" @click="open = false">ABOUT</a>
-      <a href="#offer" @click="open = false">OFFER</a>
-      <a href="#gallery" @click="open = false">GALLERY</a>
-      <a href="#contact" @click="open = false">CONTACT</a>
-    </nav>
+  <header class="menu-container" :class="{ top }">
+    <div class="wrapper">
+      <a class="logo" href="#top">Wood-Stairs</a>
+      <button @click="open = !open">
+        <div class="toggle-menu-btn" :class="{ open }">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+      <nav :class="{ open }">
+        <a href="#about" @click="open = false">ABOUT</a>
+        <a href="#offer" @click="open = false">OFFER</a>
+        <a href="#gallery" @click="open = false">GALLERY</a>
+        <a href="#contact" @click="open = false">CONTACT</a>
+      </nav>
+    </div>
   </header>
 </template>
 
@@ -22,7 +24,18 @@ export default {
   data() {
     return {
       open: false,
-      desktop: false
+      top: true
+    }
+  },
+  beforeMount() {
+    window.addEventListener('scroll', this.checkScrollY)
+    this.checkScrollY()
+  },
+  methods: {
+    checkScrollY() {
+      const scrollY = window.scrollY
+      if (scrollY > 200) this.top = false
+      else this.top = true
     }
   }
 }
@@ -35,12 +48,19 @@ export default {
   left: 0;
   height: 50px;
   width: 100%;
-  background: var(--menu-bg);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background-color: var(--menu-bg);
   z-index: 20;
-  padding: 0 20px;
+  transition: background-color, 0.2s ease-in;
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 880px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
 
   a {
     text-decoration: none;
@@ -50,6 +70,32 @@ export default {
   .logo {
     font-family: 'Permanent Marker';
     font-size: 26px;
+  }
+
+  nav {
+    position: absolute;
+    right: -210px;
+    top: 49px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    background: var(--menu-bg);
+    width: 200px;
+    height: 100vh;
+    transition: transform 0.2s ease-in;
+
+    a {
+      font-size: 18px;
+      margin-top: 30px;
+
+      &:first-child {
+        margin-top: 40px;
+      }
+    }
+
+    &.open {
+      transform: translateX(-210px);
+    }
   }
 
   button {
@@ -86,29 +132,30 @@ export default {
     }
   }
 
-  nav {
-    position: absolute;
-    right: -210px;
-    top: 50px;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    background: var(--menu-bg);
-    width: 200px;
-    height: 100vh;
-    transition: transform 0.2s ease-in;
+  @media screen and (min-width: 768px) {
+    .wrapper {
+      nav {
+        position: static;
+        flex-flow: row;
+        height: auto;
+        width: auto;
 
-    a {
-      font-size: 18px;
-      margin-top: 30px;
+        a {
+          margin: 0 0 0 30px;
+        }
+      }
 
-      &:first-child {
-        margin-top: 40px;
+      button {
+        display: none;
       }
     }
 
-    &.open {
-      transform: translateX(-210px);
+    &.top {
+      background-color: transparent;
+
+      nav {
+        background-color: transparent;
+      }
     }
   }
 }
