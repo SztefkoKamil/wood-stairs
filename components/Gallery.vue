@@ -1,5 +1,5 @@
 <template>
-  <article id="gallery" class="gallery-container">
+  <article id="gallery" class="gallery-container section">
     <h2 class="section-header">See our works</h2>
     <swiper v-if="show" ref="mySwiper" :options="swiperOptions">
       <swiper-slide v-for="(img, i) in images" :key="i">
@@ -89,8 +89,6 @@ export default {
 
 <style lang="scss">
 .gallery-container {
-  padding: 70px 30px 0;
-
   .swiper-button {
     color: var(--green);
   }

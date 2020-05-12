@@ -1,5 +1,5 @@
 <template>
-  <article id="about" class="about-container">
+  <article id="about" class="about-container section">
     <div>
       <h2 class="section-header">Who we are</h2>
       <div class="inner">
@@ -39,8 +39,6 @@
 
 <style lang="scss">
 .about-container {
-  padding: 70px 30px 0;
-
   img {
     width: 100%;
     border-radius: 50px;
@@ -49,7 +47,7 @@
 
   @media screen and (min-width: 768px) {
     p {
-      font-size: 20px;
+      font-size: 18px;
     }
 
     .inner {

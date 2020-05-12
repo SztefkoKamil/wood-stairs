@@ -1,5 +1,5 @@
 <template>
-  <article id="offer" class="offer-container">
+  <article id="offer" class="offer-container section">
     <div>
       <h2 class="section-header">What we offer</h2>
       <ul>
@@ -45,8 +45,6 @@ export default {
 
 <style lang="scss">
 .offer-container {
-  padding: 70px 30px 0;
-
   ul {
     list-style: none;
   }

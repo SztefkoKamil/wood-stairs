@@ -1,5 +1,5 @@
 <template>
-  <article id="contact" class="contact-container">
+  <article id="contact" class="contact-container section">
     <h2 class="section-header">Contact Us</h2>
     <div>
       <div class="address">
@@ -30,8 +30,6 @@
 
 <style lang="scss">
 .contact-container {
-  padding: 70px 30px 0;
-
   .address {
     & > div {
       display: flex;

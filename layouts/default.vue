@@ -42,6 +42,10 @@ html {
   padding: 0;
 }
 
+.section {
+  padding: 70px 30px 0;
+}
+
 .section-header {
   font-size: 34px;
   font-family: 'Volkhov';
