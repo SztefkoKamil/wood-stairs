@@ -44,7 +44,8 @@ html {
 
 .section-header {
   font-size: 34px;
-  font-family: 'Velkhov';
+  font-family: 'Volkhov';
+  font-weight: 400;
   text-align: center;
   width: max-content;
   margin: 0 auto 40px;
