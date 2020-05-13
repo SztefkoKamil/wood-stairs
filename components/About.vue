@@ -12,12 +12,14 @@
         </p>
         <picture>
           <source
-            media="(max-width: 768px)"
-            srcset="../assets/images/thumbnail-about.webp"
+            media="(max-width: 767px)"
+            srcset="~/assets/images/thumbnail-about.webp"
           />
           <img
-            src="../assets/images/thumbnail-about-square.webp"
+            src="~assets/images/thumbnail-about-square.webp"
+            data-name="about-square"
             alt="wooden stairs"
+            @click="showPreview"
           />
         </picture>
       </div>
@@ -35,6 +37,19 @@
     </div>
   </article>
 </template>
+
+<script>
+import eventBus from '../store/eventBus'
+
+export default {
+  methods: {
+    showPreview(e) {
+      const name = e.target.getAttribute('data-name')
+      eventBus.$emit('showPreview', name)
+    }
+  }
+}
+</script>
 
 <style lang="scss">
 .about-container {
@@ -67,6 +82,7 @@
       img {
         border-radius: 50%;
         margin: 0;
+        cursor: pointer;
       }
     }
   }

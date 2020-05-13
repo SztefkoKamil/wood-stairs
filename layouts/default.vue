@@ -3,15 +3,36 @@
     <Menu />
     <nuxt />
     <myFooter />
+    <Preview v-if="preview" :name="name" />
   </div>
 </template>
 
 <script>
+import eventBus from '../store/eventBus'
 import Menu from '../components/Menu'
 import Footer from '../components/Footer'
+import Preview from '../components/Preview'
 
 export default {
-  components: { Menu, myFooter: Footer }
+  components: { Menu, myFooter: Footer, Preview },
+  data() {
+    return {
+      preview: false,
+      name: ''
+    }
+  },
+  beforeMount() {
+    const html = document.querySelector('html')
+    eventBus.$on('showPreview', (name) => {
+      this.name = name
+      html.classList.add('preview')
+      this.preview = true
+    })
+    eventBus.$on('closePreview', () => {
+      html.classList.remove('preview')
+      this.preview = false
+    })
+  }
 }
 </script>
 
@@ -33,6 +54,10 @@ html {
   --green: #3eb115;
   --shadow: hsla(0, 0%, 55%, 1);
   scroll-behavior: smooth;
+
+  &.preview {
+    overflow: hidden;
+  }
 }
 
 *,

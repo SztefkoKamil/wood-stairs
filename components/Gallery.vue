@@ -3,7 +3,12 @@
     <h2 class="section-header">See our works</h2>
     <swiper v-if="show" ref="mySwiper" :options="swiperOptions">
       <swiper-slide v-for="(img, i) in images" :key="i">
-        <img :src="img" alt="wooden stairs" @click="showFullscreen" />
+        <img
+          :src="img.src"
+          :data-name="img.name"
+          alt="wooden stairs"
+          @click="showPreview"
+        />
       </swiper-slide>
       <div slot="button-prev" class="swiper-button-prev swiper-button"></div>
       <div slot="button-next" class="swiper-button-next swiper-button"></div>
@@ -14,6 +19,7 @@
 <script>
 import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
+import eventBus from '../store/eventBus'
 
 export default {
   components: {
@@ -27,15 +33,42 @@ export default {
     return {
       show: true,
       images: [
-        require('../assets/images/gallery/thumbnail-g-1.webp'),
-        require('../assets/images/gallery/thumbnail-g-2.webp'),
-        require('../assets/images/gallery/thumbnail-g-3.webp'),
-        require('../assets/images/gallery/thumbnail-g-4.webp'),
-        require('../assets/images/gallery/thumbnail-g-5.webp'),
-        require('../assets/images/gallery/thumbnail-g-6.webp'),
-        require('../assets/images/gallery/thumbnail-g-7.webp'),
-        require('../assets/images/gallery/thumbnail-g-8.webp'),
-        require('../assets/images/gallery/thumbnail-g-9.webp')
+        {
+          name: 'g-1',
+          src: require('../assets/images/gallery/thumbnail-g-1.webp')
+        },
+        {
+          name: 'g-2',
+          src: require('../assets/images/gallery/thumbnail-g-2.webp')
+        },
+        {
+          name: 'g-3',
+          src: require('../assets/images/gallery/thumbnail-g-3.webp')
+        },
+        {
+          name: 'g-4',
+          src: require('../assets/images/gallery/thumbnail-g-4.webp')
+        },
+        {
+          name: 'g-5',
+          src: require('../assets/images/gallery/thumbnail-g-5.webp')
+        },
+        {
+          name: 'g-6',
+          src: require('../assets/images/gallery/thumbnail-g-6.webp')
+        },
+        {
+          name: 'g-7',
+          src: require('../assets/images/gallery/thumbnail-g-7.webp')
+        },
+        {
+          name: 'g-8',
+          src: require('../assets/images/gallery/thumbnail-g-8.webp')
+        },
+        {
+          name: 'g-9',
+          src: require('../assets/images/gallery/thumbnail-g-9.webp')
+        }
       ],
       baseSwiper: null,
       swiperOptions: {
@@ -80,8 +113,9 @@ export default {
         })
       }
     },
-    showFullscreen(e) {
-      // console.log(e.target)
+    showPreview(e) {
+      const name = e.target.getAttribute('data-name')
+      eventBus.$emit('showPreview', name)
     }
   }
 }

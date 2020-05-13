@@ -1,13 +1,26 @@
 <template>
   <li class="card-container">
-    <img :src="card.img" alt="wooden-stairs" />
+    <img
+      :src="card.src"
+      :data-name="card.name"
+      alt="wooden-stairs"
+      @click="showPreview"
+    />
     <p>{{ card.text }}</p>
   </li>
 </template>
 
 <script>
+import eventBus from '../store/eventBus'
+
 export default {
-  props: ['card']
+  props: ['card'],
+  methods: {
+    showPreview(e) {
+      const name = e.target.getAttribute('data-name')
+      eventBus.$emit('showPreview', name)
+    }
+  }
 }
 </script>
 
@@ -64,6 +77,7 @@ export default {
       img {
         border-top-right-radius: 50px;
         width: 300px;
+        cursor: pointer;
       }
     }
 

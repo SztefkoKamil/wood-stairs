@@ -23,17 +23,20 @@ export default {
     return {
       cards: [
         {
-          img: require('../assets/images/offer/thumbnail-offer-1.webp'),
+          name: 'offer-1',
+          src: require('../assets/images/offer/thumbnail-offer-1.webp'),
           text:
             'Cupidatat dolore pariatur culpa quis minim dolore. Labore id enim ad proident esse consectetur Lorem mollit ut fugiat. Id eiusmod voluptate irure exercitation ex incididunt quis elit consequat.'
         },
         {
-          img: require('../assets/images/offer/thumbnail-offer-2.webp'),
+          name: 'offer-2',
+          src: require('../assets/images/offer/thumbnail-offer-2.webp'),
           text:
             'Mollit qui duis ut sit non amet enim dolore adipisicing. Ea sit id proident eiusmod consectetur amet ea laborum id quis eu mollit dolore. Consequat enim nisi aliquip tempor veniam pariatur fugiat culpa officia esse.'
         },
         {
-          img: require('../assets/images/offer/thumbnail-offer-3.webp'),
+          name: 'offer-3',
+          src: require('../assets/images/offer/thumbnail-offer-3.webp'),
           text:
             'Id aliqua minim ad eiusmod eu cupidatat qui nisi. Laboris ad nulla amet nostrud veniam id. Irure aliquip aute labore quis.  Lorem mollit ut fugiat.'
         }
