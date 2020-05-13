@@ -10,10 +10,10 @@
         </div>
       </button>
       <nav :class="{ open }">
-        <a href="#about" @click="open = false">ABOUT</a>
-        <a href="#offer" @click="open = false">OFFER</a>
-        <a href="#gallery" @click="open = false">GALLERY</a>
-        <a href="#contact" @click="open = false">CONTACT</a>
+        <a class="section-anchor" href="#about" @click="active">ABOUT</a>
+        <a class="section-anchor" href="#offer" @click="active">OFFER</a>
+        <a class="section-anchor" href="#gallery" @click="active">GALLERY</a>
+        <a class="section-anchor" href="#contact" @click="active">CONTACT</a>
       </nav>
     </div>
   </header>
@@ -36,6 +36,14 @@ export default {
       const scrollY = window.scrollY
       if (scrollY > 200) this.top = false
       else this.top = true
+    },
+    active(e) {
+      const anchors = [...document.querySelectorAll('.section-anchor')]
+      this.open = false
+      anchors.map((a) => {
+        a.classList.remove('active')
+      })
+      e.target.classList.add('active')
     }
   }
 }
@@ -87,9 +95,30 @@ export default {
     a {
       font-size: 18px;
       margin-top: 30px;
+      padding: 0 3px 2px;
+      position: relative;
 
       &:first-child {
         margin-top: 40px;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        border-bottom: 2px solid var(--green);
+        width: 100%;
+        transition: transform 0.2s ease-out;
+        transform: scaleX(0);
+      }
+
+      &:hover::after {
+        transform: scaleX(1);
+      }
+
+      &.active::after {
+        transform: scaleX(1);
       }
     }
 
@@ -141,7 +170,7 @@ export default {
         width: auto;
 
         a {
-          margin: 0 0 0 30px;
+          margin: 0 0 0 24px;
         }
       }
 
