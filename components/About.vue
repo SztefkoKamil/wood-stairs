@@ -16,7 +16,6 @@
             srcset="../assets/images/thumbnail-about.webp"
           />
           <img
-            class="shadow-box"
             src="../assets/images/thumbnail-about-square.webp"
             alt="wooden stairs"
           />

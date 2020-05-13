@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="top">
     <Menu />
     <nuxt />
     <myFooter />
@@ -31,7 +31,7 @@ html {
   --menu-bg: #1c1c1c;
   --card-bg: #e9e9e9;
   --green: #3eb115;
-  --shadow: hsla(0, 0%, 40%, 0.75);
+  --shadow: hsla(0, 0%, 55%, 1);
   scroll-behavior: smooth;
 }
 
@@ -67,9 +67,5 @@ html {
     border-left: 1px solid var(--green);
     border-bottom: 1px solid var(--green);
   }
-}
-
-.shadow-box {
-  box-shadow: -4px 4px 4px var(--shadow);
 }
 </style>

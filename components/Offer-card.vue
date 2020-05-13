@@ -1,5 +1,5 @@
 <template>
-  <li class="card-container shadow-box">
+  <li class="card-container">
     <img :src="card.img" alt="wooden-stairs" />
     <p>{{ card.text }}</p>
   </li>
