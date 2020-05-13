@@ -10,10 +10,34 @@
         </div>
       </button>
       <nav :class="{ open }">
-        <a class="section-anchor" href="#about" @click="active">ABOUT</a>
-        <a class="section-anchor" href="#offer" @click="active">OFFER</a>
-        <a class="section-anchor" href="#gallery" @click="active">GALLERY</a>
-        <a class="section-anchor" href="#contact" @click="active">CONTACT</a>
+        <a
+          id="about-anchor"
+          class="section-anchor"
+          href="#about"
+          @click="active"
+          >ABOUT</a
+        >
+        <a
+          id="offer-anchor"
+          class="section-anchor"
+          href="#offer"
+          @click="active"
+          >OFFER</a
+        >
+        <a
+          id="gallery-anchor"
+          class="section-anchor"
+          href="#gallery"
+          @click="active"
+          >GALLERY</a
+        >
+        <a
+          id="contact-anchor"
+          class="section-anchor"
+          href="#contact"
+          @click="active"
+          >CONTACT</a
+        >
       </nav>
     </div>
   </header>
@@ -29,21 +53,80 @@ export default {
   },
   beforeMount() {
     window.addEventListener('scroll', this.checkScrollY)
+    window.addEventListener('resize', this.checkScrollY)
     this.checkScrollY()
   },
   methods: {
+    getAnchors() {
+      const sections = {
+        all: [...document.querySelectorAll('.section-anchor')],
+        about: document.querySelector('#about-anchor'),
+        offer: document.querySelector('#offer-anchor'),
+        gallery: document.querySelector('#gallery-anchor'),
+        contact: document.querySelector('#contact-anchor')
+      }
+      return sections
+    },
+    getSectionsPositions() {
+      const about = document.querySelector('#about')
+      const offer = document.querySelector('#offer')
+      const gallery = document.querySelector('#gallery')
+      const contact = document.querySelector('#contact')
+      const sections = {
+        about: about.offsetTop,
+        offer: offer.offsetTop,
+        gallery: gallery.offsetTop,
+        contact: contact.offsetTop
+      }
+      return sections
+    },
     checkScrollY() {
       const scrollY = window.scrollY
       if (scrollY > 200) this.top = false
       else this.top = true
+      this.checkSection(scrollY)
     },
     active(e) {
-      const anchors = [...document.querySelectorAll('.section-anchor')]
+      const anchors = this.getAnchors().all
       this.open = false
       anchors.map((a) => {
         a.classList.remove('active')
       })
       e.target.classList.add('active')
+    },
+    checkSection(scrollY) {
+      const windowHeight = window.innerHeight
+      const sections = this.getSectionsPositions()
+      if (scrollY >= sections.contact - windowHeight * 0.5) {
+        const anchors = this.getAnchors()
+        anchors.all.map((a) => {
+          a.classList.remove('active')
+        })
+        anchors.contact.classList.add('active')
+      } else if (scrollY >= sections.gallery - windowHeight * 0.4) {
+        const anchors = this.getAnchors()
+        anchors.all.map((a) => {
+          a.classList.remove('active')
+        })
+        anchors.gallery.classList.add('active')
+      } else if (scrollY >= sections.offer - windowHeight * 0.4) {
+        const anchors = this.getAnchors()
+        anchors.all.map((a) => {
+          a.classList.remove('active')
+        })
+        anchors.offer.classList.add('active')
+      } else if (scrollY >= sections.about - windowHeight * 0.4) {
+        const anchors = this.getAnchors()
+        anchors.all.map((a) => {
+          a.classList.remove('active')
+        })
+        anchors.about.classList.add('active')
+      } else {
+        const anchors = this.getAnchors()
+        anchors.all.map((a) => {
+          a.classList.remove('active')
+        })
+      }
     }
   }
 }
