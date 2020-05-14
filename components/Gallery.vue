@@ -7,6 +7,7 @@
           :src="img.src"
           :data-name="img.name"
           alt="wooden stairs"
+          loading="lazy"
           @click="showPreview"
         />
       </swiper-slide>

@@ -19,6 +19,7 @@
             ref="about-square"
             src="~assets/images/thumbnail-about-square.webp"
             data-name="about-square"
+            loading="lazy"
             alt="wooden stairs"
             tabindex="0"
             @click="showPreview"

@@ -5,6 +5,7 @@
       :src="card.src"
       :data-name="card.name"
       alt="wooden-stairs"
+      loading="lazy"
       tabindex="0"
       @click="showPreview"
       @keydown.enter="showPreview"
