@@ -23,7 +23,8 @@ export default {
         rel: 'stylesheet',
         href:
           'https://fonts.googleapis.com/css?family=Oswald|Permanent+Marker|Volkhov&display=swap'
-      }
+      },
+      { rel: 'preconnect', href: 'https://www.openstreetmap.org' }
     ]
   },
   /*
