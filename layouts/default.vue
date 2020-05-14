@@ -91,6 +91,10 @@ html {
   padding: 0;
 }
 
+*:focus {
+  outline: 2px solid var(--primary);
+}
+
 .section {
   padding: 70px 30px 0;
 }
