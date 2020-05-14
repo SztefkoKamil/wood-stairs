@@ -11,7 +11,7 @@
 .footer {
   margin: 70px 0 0;
   font-size: 14px;
-  background: var(--menu-bg);
+  background: var(--bg-secondary);
   padding: 30px 0;
 
   .inner-footer {

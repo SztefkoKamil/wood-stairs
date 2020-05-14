@@ -124,7 +124,7 @@ export default {
 <style lang="scss">
 .gallery-container {
   .swiper-button {
-    color: var(--green);
+    color: var(--primary);
   }
 
   .swiper-slide {

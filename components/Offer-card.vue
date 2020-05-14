@@ -26,7 +26,7 @@ export default {
 
 <style lang="scss">
 .card-container {
-  background: var(--card-bg);
+  background: var(--bg-tertiary);
   margin: 0 auto 50px;
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
@@ -45,7 +45,7 @@ export default {
   }
 
   p {
-    color: var(--font);
+    color: var(--color-secondary);
     padding: 20px 10px 30px;
   }
 

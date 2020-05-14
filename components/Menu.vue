@@ -139,7 +139,7 @@ export default {
   left: 0;
   height: 50px;
   width: 100%;
-  background-color: var(--menu-bg);
+  background-color: var(--bg-secondary);
   z-index: 20;
   transition: background-color, 0.2s ease-in;
 
@@ -155,7 +155,7 @@ export default {
 
   a {
     text-decoration: none;
-    color: currentColor;
+    color: var(--color-primary);
   }
 
   .logo {
@@ -170,7 +170,7 @@ export default {
     display: flex;
     flex-flow: column;
     align-items: center;
-    background: var(--menu-bg);
+    background: var(--bg-secondary);
     width: 200px;
     height: 100vh;
     transition: transform 0.2s ease-in;
@@ -190,7 +190,7 @@ export default {
         position: absolute;
         bottom: 0;
         left: 0;
-        border-bottom: 2px solid var(--green);
+        border-bottom: 2px solid var(--primary);
         width: 100%;
         transition: transform 0.2s ease-out;
         transform: scaleX(0);

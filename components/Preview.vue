@@ -99,7 +99,7 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #3d3d3d;
+  background-color: var(--bg-primary);
   z-index: 100;
   overflow: scroll;
 
@@ -110,7 +110,7 @@ export default {
     width: 40px;
     height: 40px;
     border: none;
-    background-color: var(--menu-bg);
+    background-color: var(--bg-secondary);
     border-radius: 50%;
     display: flex;
     flex-flow: column;
@@ -121,7 +121,7 @@ export default {
       width: 30px;
       height: 4px;
       display: block;
-      background-color: #fff;
+      background-color: var(--color-primary);
       border-radius: 5px;
 
       &:first-child {

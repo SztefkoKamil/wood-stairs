@@ -38,21 +38,25 @@ export default {
 
 <style lang="scss">
 html {
-  font-family: 'Oswald', Arial, sans-serif;
+  /* --- variables --- */
+  --font-primary: 'Oswald';
+  --font-secondary: 'Volkhov';
+  --color-primary: #fafafa;
+  --color-secondary: #363636;
+  --bg-primary: #3d3d3d;
+  --bg-secondary: #1c1c1c;
+  --bg-tertiary: #e9e9e9;
+  --primary: #3eb115;
+  /** --- global styles --- */
+  font-family: var(--font-primary), Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  /* --- colors --- */
-  background: #3d3d3d;
-  color: #fafafa;
-  --font: #363636;
-  --menu-bg: #1c1c1c;
-  --card-bg: #e9e9e9;
-  --green: #3eb115;
-  --shadow: hsla(0, 0%, 55%, 1);
+  background: var(--bg-primary);
+  color: var(--color-primary);
   scroll-behavior: smooth;
 
   &.preview {
@@ -74,7 +78,7 @@ html {
 
 .section-header {
   font-size: 34px;
-  font-family: 'Volkhov';
+  font-family: var(--font-secondary);
   font-weight: 400;
   text-align: center;
   width: max-content;
@@ -89,8 +93,8 @@ html {
     bottom: 0;
     height: 75%;
     width: 100%;
-    border-left: 1px solid var(--green);
-    border-bottom: 1px solid var(--green);
+    border-left: 1px solid var(--primary);
+    border-bottom: 1px solid var(--primary);
   }
 }
 </style>
