@@ -1,10 +1,13 @@
 <template>
   <li class="card-container">
     <img
+      :ref="card.name"
       :src="card.src"
       :data-name="card.name"
       alt="wooden-stairs"
+      tabindex="0"
       @click="showPreview"
+      @keydown.enter="showPreview"
     />
     <p>{{ card.text }}</p>
   </li>
@@ -15,6 +18,13 @@ import eventBus from '../store/eventBus'
 
 export default {
   props: ['card'],
+  created() {
+    eventBus.$on('focusBack', (name) => {
+      this.$nextTick(() => {
+        if (this.$refs[name]) this.$refs[name].focus()
+      })
+    })
+  },
   methods: {
     showPreview(e) {
       const name = e.target.getAttribute('data-name')

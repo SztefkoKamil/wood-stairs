@@ -10,8 +10,17 @@
           @click="showPreview"
         />
       </swiper-slide>
-      <div slot="button-prev" class="swiper-button-prev swiper-button"></div>
-      <div slot="button-next" class="swiper-button-next swiper-button"></div>
+      <div
+        slot="button-prev"
+        class="swiper-button-prev swiper-button"
+        @keydown.space="showCurrentPreview"
+      ></div>
+      <div
+        slot="button-next"
+        ref="galleryNext"
+        class="swiper-button-next swiper-button"
+        @keydown.space="showCurrentPreview"
+      ></div>
     </swiper>
   </article>
 </template>
@@ -81,6 +90,12 @@ export default {
       }
     }
   },
+  created() {
+    eventBus.$on('focusBack', (name) => {
+      if (name.includes('g-'))
+        this.$nextTick(() => this.$refs.galleryNext.focus())
+    })
+  },
   beforeMount() {
     this.resizeListener()
     this.swiperSize(this.getWindowWidth())
@@ -116,6 +131,11 @@ export default {
     showPreview(e) {
       const name = e.target.getAttribute('data-name')
       eventBus.$emit('showPreview', name)
+    },
+    showCurrentPreview(e) {
+      e.preventDefault()
+      const current = document.querySelector('.swiper-slide-active img')
+      current.click()
     }
   }
 }

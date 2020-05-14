@@ -16,10 +16,13 @@
             srcset="~/assets/images/thumbnail-about.webp"
           />
           <img
+            ref="about-square"
             src="~assets/images/thumbnail-about-square.webp"
             data-name="about-square"
             alt="wooden stairs"
+            tabindex="0"
             @click="showPreview"
+            @keydown.enter="showPreview"
           />
         </picture>
       </div>
@@ -42,6 +45,13 @@
 import eventBus from '../store/eventBus'
 
 export default {
+  created() {
+    eventBus.$on('focusBack', (name) => {
+      this.$nextTick(() => {
+        if (this.$refs[name]) this.$refs[name].focus()
+      })
+    })
+  },
   methods: {
     showPreview(e) {
       const name = e.target.getAttribute('data-name')

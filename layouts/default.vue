@@ -31,6 +31,7 @@ export default {
     eventBus.$on('closePreview', () => {
       html.classList.remove('preview')
       this.preview = false
+      eventBus.$emit('focusBack', this.name)
     })
   }
 }
