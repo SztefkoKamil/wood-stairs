@@ -40,7 +40,7 @@ export default {
 <style lang="scss">
 html {
   /* --- variables --- */
-  --font-primary: 'Oswald';
+  --font-primary: 'Lato';
   --font-secondary: 'Volkhov';
   --color-primary: #fafafa;
   --color-secondary: #363636;
@@ -51,7 +51,6 @@ html {
   /** --- global styles --- */
   font-family: var(--font-primary), Arial, sans-serif;
   font-size: 16px;
-  word-spacing: 1px;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
@@ -59,6 +58,7 @@ html {
   background: var(--bg-primary);
   color: var(--color-primary);
   scroll-behavior: smooth;
+
   &::-webkit-scrollbar {
     background-color: var(--bg-secondary);
   }
@@ -69,6 +69,10 @@ html {
 
   &.preview {
     overflow: hidden;
+  }
+
+  p {
+    line-height: 135%;
   }
 }
 
