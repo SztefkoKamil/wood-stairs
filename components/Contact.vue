@@ -62,13 +62,28 @@
         </div>
       </div>
       <iframe
+        id="iframeMap"
+        title="map of our location"
         frameborder="0"
         scrolling="no"
-        src="https://www.openstreetmap.org/export/embed.html?bbox=-118.85614871978761%2C34.15663346692696%2C-118.82576465606691%2C34.187594858235826&amp;layer=mapnik&amp;marker=34.172115582379185%2C-118.84095668792725"
+        src=""
+        data-src="https://www.openstreetmap.org/export/embed.html?bbox=-118.85614871978761%2C34.15663346692696%2C-118.82576465606691%2C34.187594858235826&amp;layer=mapnik&amp;marker=34.172115582379185%2C-118.84095668792725"
       ></iframe>
     </div>
   </article>
 </template>
+
+<script>
+export default {
+  mounted() {
+    const iframe = document.querySelector('#iframeMap')
+    const src = iframe.getAttribute('data-src')
+    setTimeout(() => {
+      iframe.setAttribute('src', src)
+    }, 1000)
+  }
+}
+</script>
 
 <style lang="scss">
 .contact-container {
