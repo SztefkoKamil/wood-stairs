@@ -5,7 +5,7 @@
     tabindex="0"
     @keydown.esc="closePreview"
   >
-    <button @click="closePreview">
+    <button aria-label="close preview" @click="closePreview">
       <span></span>
       <span></span>
     </button>

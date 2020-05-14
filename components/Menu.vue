@@ -1,17 +1,19 @@
 <template>
   <header class="menu-container" :class="{ top }">
     <div class="wrapper">
-      <a class="logo" href="#top">Wood-Stairs</a>
-      <button @click="open = !open">
+      <a class="logo" href="#top" aria-label="go to top">Wood-Stairs</a>
+      <button aria-label="toggle mobile menu" @click="open = !open">
         <div class="toggle-menu-btn" :class="{ open }">
           <span></span>
           <span></span>
           <span></span>
         </div>
       </button>
-      <nav :class="{ open }">
+      <nav role="menu" :class="{ open }">
         <a
           id="about-anchor"
+          aria-label="about us section"
+          role="menuitem"
           class="section-anchor"
           href="#about"
           @click="active"
@@ -19,6 +21,8 @@
         >
         <a
           id="offer-anchor"
+          aria-label="offer section"
+          role="menuitem"
           class="section-anchor"
           href="#offer"
           @click="active"
@@ -26,6 +30,8 @@
         >
         <a
           id="gallery-anchor"
+          aria-label="gallery section"
+          role="menuitem"
           class="section-anchor"
           href="#gallery"
           @click="active"
@@ -33,6 +39,8 @@
         >
         <a
           id="contact-anchor"
+          aria-label="contact section"
+          role="menuitem"
           class="section-anchor"
           href="#contact"
           @click="active"
