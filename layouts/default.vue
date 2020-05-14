@@ -56,6 +56,13 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   background: var(--bg-primary);
+  background: linear-gradient(
+    to right,
+    #575757 0%,
+    #3d3d3d 30%,
+    #3d3d3d 70%,
+    #575757 100%
+  );
   color: var(--color-primary);
   scroll-behavior: smooth;
 
