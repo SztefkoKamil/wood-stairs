@@ -1,5 +1,10 @@
 <template>
-  <div class="preview-container">
+  <div
+    ref="preview"
+    class="preview-container"
+    tabindex="0"
+    @keydown.esc="closePreview"
+  >
     <button @click="closePreview">
       <span></span>
       <span></span>
@@ -78,6 +83,7 @@ export default {
   },
   beforeMount() {
     this.src = this.prepareSrc(this.name)
+    this.$nextTick(() => this.$refs.preview.focus())
   },
   methods: {
     prepareSrc(name) {
