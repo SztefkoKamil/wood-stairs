@@ -103,6 +103,14 @@ export default {
   z-index: 100;
   overflow: scroll;
 
+  &::-webkit-scrollbar {
+    background-color: var(--bg-secondary);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--bg-tertiary);
+    border-radius: 15px;
+  }
+
   button {
     position: fixed;
     top: 20px;

@@ -58,6 +58,13 @@ html {
   background: var(--bg-primary);
   color: var(--color-primary);
   scroll-behavior: smooth;
+  &::-webkit-scrollbar {
+    background-color: var(--bg-secondary);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--bg-tertiary);
+    border-radius: 15px;
+  }
 
   &.preview {
     overflow: hidden;
