@@ -87,7 +87,8 @@ export default {
 
       img {
         border-top-right-radius: 50px;
-        width: 300px;
+        min-width: 300px;
+        max-width: 300px;
         cursor: pointer;
       }
     }

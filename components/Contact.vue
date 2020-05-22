@@ -7,9 +7,6 @@
           <svg
             aria-hidden="true"
             focusable="false"
-            data-prefix="fas"
-            data-icon="map-marked-alt"
-            class="svg-inline--fa fa-map-marked-alt fa-w-18"
             role="img"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 576 512"
@@ -28,9 +25,6 @@
           <svg
             aria-hidden="true"
             focusable="false"
-            data-prefix="fas"
-            data-icon="phone-alt"
-            class="svg-inline--fa fa-phone-alt fa-w-16"
             role="img"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512"
@@ -46,9 +40,6 @@
           <svg
             aria-hidden="true"
             focusable="false"
-            data-prefix="fas"
-            data-icon="envelope"
-            class="svg-inline--fa fa-envelope fa-w-16"
             role="img"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512"
@@ -99,7 +90,8 @@ export default {
     }
 
     svg {
-      width: 50px;
+      min-width: 50px;
+      max-height: 50px;
     }
 
     h6 {
