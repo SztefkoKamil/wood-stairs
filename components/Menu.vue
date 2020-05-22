@@ -59,7 +59,7 @@ export default {
       top: true
     }
   },
-  beforeMount() {
+  mounted() {
     window.addEventListener('scroll', this.checkScrollY)
     window.addEventListener('resize', this.checkScrollY)
     this.checkScrollY()
@@ -186,7 +186,7 @@ export default {
     a {
       font-size: 18px;
       margin-top: 30px;
-      padding: 0 3px 2px;
+      padding: 0 3px 4px;
       position: relative;
 
       &:first-child {
