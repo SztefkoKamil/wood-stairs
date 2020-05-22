@@ -9,7 +9,7 @@
       <span></span>
       <span></span>
     </button>
-    <img :src="src" alt="wooden stairs" />
+    <img :src="src" alt="wooden stairs" draggable="false" />
   </div>
 </template>
 
@@ -81,9 +81,10 @@ export default {
       ]
     }
   },
-  beforeMount() {
+  mounted() {
     this.src = this.prepareSrc(this.name)
     this.$nextTick(() => this.$refs.preview.focus())
+    this.runGrabLogic()
   },
   methods: {
     prepareSrc(name) {
@@ -93,6 +94,48 @@ export default {
     },
     closePreview() {
       eventBus.$emit('closePreview')
+    },
+    runGrabLogic() {
+      let grabbed = false
+      const box = this.$refs.preview
+      box.addEventListener('mousedown', (eStart) => {
+        grabbed = true
+        let oldX = eStart.x
+        let oldY = eStart.y
+        box.addEventListener('mouseup', () => (grabbed = false))
+        box.addEventListener('mouseleave', () => (grabbed = false))
+        box.addEventListener('mousemove', (e) => {
+          if (!grabbed) return null
+          const moveBy = 1 // px
+
+          // check whether move left or right
+          const maxScrollLeft = box.scrollWidth - box.clientWidth
+          const newX = e.x
+          let moveXby = 0
+          if (box.scrollLeft < maxScrollLeft && newX < oldX) {
+            moveXby = moveBy // move right
+          } else if (box.scrollLeft > 0 && newX > oldX) {
+            moveXby = -moveBy // move left
+          }
+          oldX = newX
+
+          // check whether move up or down
+          const maxScrollTop = box.scrollHeight - box.clientHeight
+          const newY = e.y
+          let moveYby = 0
+          if (box.scrollTop < maxScrollTop && newY < oldY) {
+            moveYby = moveBy // move down
+          } else if (box.scrollTop > 0 && newY > oldY) {
+            moveYby = -moveBy // move up
+          }
+          oldY = newY
+
+          box.scrollBy({
+            top: moveYby,
+            left: moveXby
+          })
+        })
+      })
     }
   }
 }
@@ -108,6 +151,7 @@ export default {
   background-color: var(--bg-primary);
   z-index: 100;
   overflow: scroll;
+  cursor: grab;
 
   &::-webkit-scrollbar {
     background-color: var(--bg-secondary);
