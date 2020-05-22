@@ -1,6 +1,6 @@
 # Wood-Stairs
 
-Demo website
+Demo website build on self designed template. Every each image has a full size praview.
 
 Used technologies: NuxtJS, SASS, Swiper, OpenStreentMap
 
