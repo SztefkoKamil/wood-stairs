@@ -1,7 +1,11 @@
 <template>
   <article id="gallery" class="gallery-container section">
     <h2 class="section-header">See our works</h2>
-    <swiper v-if="show" ref="mySwiper" :options="swiperOptions">
+    <swiper
+      ref="mySwiper"
+      :options="swiperOptions"
+      @resize="swiperSize(getWindowWidth())"
+    >
       <swiper-slide v-for="(img, i) in images" :key="i">
         <img
           :src="img.src"
@@ -27,7 +31,7 @@
 </template>
 
 <script>
-import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
 import eventBus from '../store/eventBus'
 
@@ -36,12 +40,8 @@ export default {
     Swiper,
     SwiperSlide
   },
-  directives: {
-    swiper: directive
-  },
   data() {
     return {
-      show: true,
       images: [
         {
           name: 'g-1',
@@ -80,7 +80,6 @@ export default {
           src: require('../assets/images/gallery/thumbnail-g-9.webp')
         }
       ],
-      baseSwiper: null,
       swiperOptions: {
         loop: true,
         slidesPerView: 1,
@@ -97,37 +96,16 @@ export default {
         this.$nextTick(() => this.$refs.galleryNext.focus())
     })
   },
-  beforeMount() {
-    this.resizeListener()
+  mounted() {
     this.swiperSize(this.getWindowWidth())
   },
   methods: {
     getWindowWidth: () => window.innerWidth,
-    resizeListener() {
-      window.addEventListener('resize', () => {
-        this.swiperSize(this.getWindowWidth())
-      })
-    },
     swiperSize(width) {
-      if (width <= 560) {
-        this.show = false
-        this.swiperOptions.slidesPerView = 1
-        this.$nextTick().then(() => {
-          this.show = true
-        })
-      } else if (width <= 800) {
-        this.show = false
-        this.swiperOptions.slidesPerView = 2
-        this.$nextTick().then(() => {
-          this.show = true
-        })
-      } else {
-        this.show = false
-        this.swiperOptions.slidesPerView = 3
-        this.$nextTick().then(() => {
-          this.show = true
-        })
-      }
+      const swiperOptions = this.$refs.mySwiper.swiperInstance.params
+      if (width <= 560) swiperOptions.slidesPerView = 1
+      else if (width <= 800) swiperOptions.slidesPerView = 2
+      else swiperOptions.slidesPerView = 3
     },
     showPreview(e) {
       const name = e.target.getAttribute('data-name')
