@@ -2,7 +2,12 @@
   <footer class="footer">
     <div class="inner-footer">
       <span>Wood-Stairs 2020 &copy; All Rights Reserved</span>
-      <span>Design & implementation kontakt@kamilsztefko.pl</span>
+      <span
+        >Design & production:
+        <a href="mailto:contact@kamilsztefko.pl"
+          >contact@kamilsztefko.pl</a
+        ></span
+      >
     </div>
   </footer>
 </template>
@@ -24,6 +29,10 @@
 
     span:first-child {
       margin: 0 0 10px;
+    }
+
+    a {
+      color: currentColor;
     }
   }
 
